@@ -1,6 +1,6 @@
 // Run this sample code as-is and examine the output. 
-// Should the shuttle have launched? 
-// Did it?
+// Should the shuttle have launched? no insufficient fuel
+// Did it? yes
 // Do not worry about fixing the code yet, we will do that in the next series of exercises.
 
 let launchReady = false;
