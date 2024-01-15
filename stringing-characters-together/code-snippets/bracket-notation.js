@@ -1,4 +1,4 @@
-let jsCreator = "Brendan Eich";
+//let jsCreator = "Brendan Eich";
 //let firstInitial = jsCreator[0];
 //let lastInitial = jsCreator[8];
 
@@ -38,3 +38,16 @@ let jsCreator = "Brendan Eich";
 //let nonprofit = "LaunchCode";
 //console.log(nonprofit.toLowerCase());
 //console.log(nonprofit);
+//myStr = 'Index';
+//myStr[2] === 'n';
+//myStr[4] === 'x';
+//myStr[6] === '';
+//myStr[0] === 'I';
+//let phrase = "JavaScript rocks!";
+//console.log(phrase[phrase.length -8]);
+//console.log(typeof console);
+let firstName = "Grace";
+let lastName = "Hopper";
+
+console.log(firstName, "has", firstName.length, "characters");
+console.log(lastName, "has", lastName.length, "characters");

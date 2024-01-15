@@ -9,9 +9,9 @@
 //Script
 
 //Experiment with other combinations (chains) of string methods.
-//language =  'JavaScript';
-//languange.replace('J', 'Q');
-//language = language.slice(1,6)
+//let language = "JavaScript";
+//language.replace('J', 'Q');
+//language.slice(1,6);
 //console.log(language);
 //let org = " The LaunchCode Foundation ";
 //let trimmed = org.trim();
@@ -54,10 +54,13 @@
 //- Sri Chinmoy`;
 //console.log(poem);
 
-let pluralNoun = ;
-let name = ;
-let verb = ;
-let adjective = ;
-let color = ;
+//let pluralNoun = ;
+//let name = ;
+//let verb = ;
+//let adjective = ;
+//let color = ;
 
-console.log("JavaScript provides a " + color + "collection of tools - including " + adhective + "syntax and " + pluralNoun + "- that allows " + name + "to" +verb + "with strings.");
+//console.log("JavaScript provides a " + color + "collection of tools - including " + adhective + "syntax and " + pluralNoun + "- that allows " + name + "to" +verb + "with strings.");
+//console.log("A message\nbroken across lines,\n\t and  indented");
+//console.log("The interrobang character, \u203d. combines ? and !");
+//console.log("\" The dog's favorite toy is a stuffed hedgehog.\" said Chris");
