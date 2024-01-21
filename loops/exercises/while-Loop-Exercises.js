@@ -24,7 +24,7 @@ console.log(startingFuelLevel);
 
 //b. Use a second loop to query the user for the number of astronauts (up to a maximum of 7). Validate the entry.
 
-while (astronauts > 7) {
+while (astronauts < 7) {
   astronauts = input.question("Please enter the number of astronauts: ");
   astronauts = Number(astronauts);
 }  
