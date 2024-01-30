@@ -1,49 +1,49 @@
-//function makeLine(size) {
-  //  let line = '';
-    //for (let i = 0; i < size; i++) {
-//       line += '#';
-  //  }
-//    return line; 
-// } console.log(makeLine(5));
+function makeLine(size) {
+    let line = '';
+    for (let i = 0; i < size; i++) {
+       line += '#';
+    }
+    return line; 
+ } console.log(makeLine(5));
 
 
 
-//function makeSquare(width, height) {
-//    let square = '';
-//    for (let i = 0; i < height; i++) {
-//        for (let j = 0; j < width; j++) {
-//            square += '#';
-//        }
-//    square += '\n';
-//    }
-//    return square;
-//}
-//console.log(makeSquare(5,4));
+function makeSquare(width, height) {
+    let square = '';
+    for (let i = 0; i < height; i++) {        
+      for (let j = 0; j < width; j++) {
+            square += '#';
+        }
+    square += '\n';
+    }
+    return square;
+}
+console.log(makeSquare(5,4));
 
 
-//function makeRectangle(width, height) {
-//    let rectangle = '';
-//    for (let i = 0; i < height; i++) {
-//        for (let j = 0; j < width; j++){
-//            rectangle += '#';
-//        }
-//    rectangle += '\n';
-//    }
-//    return rectangle;
-//}
-//console.log(makeRectangle(5,3));
+function makeRectangle(width, height) {
+    let rectangle = '';
+   for (let i = 0; i < height; i++) {
+        for (let j = 0; j < width; j++){
+            rectangle += '#';
+        }
+    rectangle += '\n';
+    }
+    return rectangle;
+}
+console.log(makeRectangle(5,3));
 
-//function makeDownwardStairs(height) {
-//    let stairs = '';
-//    for (let i = 0; i < height; i++) {
-//        for (let j = 0; j <= i; j++) {
-//            stairs += '#';
-//        }
-//    stairs += '\n';
-//    }
-//    return stairs;
-//}
-//console.log(makeDownwardStairs(5));
+function makeDownwardStairs(height) {
+    let stairs = '';
+   for (let i = 0; i < height; i++) {
+       for (let j = 0; j <= i; j++) {
+            stairs += '#';
+        }
+    stairs += '\n';
+   }
+    return stairs;
+}
+console.log(makeDownwardStairs(5));
 
 function makeSpaceLine(numSpaces, numChars, char = '#') {
 let line = '';
