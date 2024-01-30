@@ -80,4 +80,4 @@ function makeSpaceLine(numSpaces, numChars, char = '#') {
         let reversedDiamond = diamond.split('\n').reverse().join('\n');
          return diamond + reversedDiamond.slice(reversedDiamond.indexOf('\n') + 1);
     }
-console.log(makeDiamond(5));    
+    
