@@ -17,13 +17,30 @@ function findMinValue(arr){
 4) Repeat parts b & c until the old array is empty.
 5) Return the new sorted array.
 6) Be sure to print the results in order to verify your code.*/
-
-//Your function here...
-
-/* BONUS MISSION: Refactor your sorting function to use recursion below:
- */
-
-//Sample arrays for testing:
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
 let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
+//Your function here...
+function sortArray(arr){
+  let sortedArr = [];
+  while (arr.length > 0){
+    let min = findMinValue(arr);
+    sortedArr.push(min);
+    arr.splice(arr.indexOf(min), 1);
+  }
+  return sortedArr;
+}
+console.log(sortArray(nums1));
+console.log(sortArray(nums2));
+/* BONUS MISSION: Refactor your sorting function to use recursion below:
+ */
+
+function sortArrayRecursively(arr){
+  if (arr.length === 0){
+    return [];
+  }
+  let min = findMinValue(arr);
+  arr.splice(arr.indexOf(min), 1);
+  return [min].concat(sortArrayRecursively(arr));
+}
+console.log(sortArrayRecursively(nums1));
