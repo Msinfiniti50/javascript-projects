@@ -1,4 +1,3 @@
-
 //function makeLine(size) {
   //  let line = '';
     //for (let i = 0; i < size; i++) {
@@ -47,37 +46,36 @@
 //console.log(makeDownwardStairs(5));
 
 function makeSpaceLine(numSpaces, numChars, char = '#') {
-    let line = '';
-    for (let i = 0; i < numSpaces; i++) {
-            line += ' ';
-        }
-      for (let j = 0; j < numChars; j++) {
-            line += char;
-       }
-        for (let k = 0; k < numSpaces; k++) {
-           line += ' ';
-       }
-     return line;
+let line = '';
+for (let i = 0; i < numSpaces; i++) {
+        line += ' ';
     }
-    //console.log(makeSpaceLine(3, 5));
-    
-    
-    
-    function makeIsoscelesTriangle(height,char = '#'){
-        let triangle = '';
-        for (let i = 0; i < height; i++) {
-    triangle += (makeSpaceLine(height - i - 1, 2*i + 1) + '\n');
-     }
-             return triangle.slice(0, -1);
+  for (let j = 0; j < numChars; j++) {
+        line += char;
+   }
+    for (let k = 0; k < numSpaces; k++) {
+       line += ' ';
+   }
+ return line;
+}
+//console.log(makeSpaceLine(3, 5));
+
+
+
+function makeIsoscelesTriangle(height,char = '#'){
+    let triangle = '';
+    for (let i = 0; i < height; i++) {
+triangle += (makeSpaceLine(height - i - 1, 2*i + 1) + '\n');
+ }
+         return triangle.slice(0, -1);
+}
+//console.log(makeIsoscelesTriangle(5));  
+
+function makeDiamond(height, char = '#') {
+    let diamond = '';
+    for (let i = 0; i < height; i++) {
+        diamond += (makeSpaceLine(height -i - 1, 2*i + 1) + '\n');
     }
-    //console.log(makeIsoscelesTriangle(5));  
-    
-    function makeDiamond(height, char = '#') {
-        let diamond = '';
-        for (let i = 0; i < height; i++) {
-            diamond += (makeSpaceLine(height -i - 1, 2*i + 1) + '\n');
-        }
-        let reversedDiamond = diamond.split('\n').reverse().join('\n');
-         return diamond + reversedDiamond.slice(reversedDiamond.indexOf('\n') + 1);
-    }
-    
+    let reversedDiamond = diamond.split('\n').reverse().join('\n');
+     return diamond + reversedDiamond.slice(reversedDiamond.indexOf('\n') + 1);
+}
