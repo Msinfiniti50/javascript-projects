@@ -1,31 +1,37 @@
-function checkFuel(level) {
-  if (level > 100000){
-    return 'green';
-  } else if (level > 50000){
-    return 'yellow';
-  } else {
-    return 'red';
+let nonSuspiciousFunction = function(a) {
+  if (checkFuel(a) === 'green') {
+     return a - 100001;
   }
-}
-
-function holdStatus(arr){
-  if (arr.length < 7) {
-    return `Spaces available: ${7-arr.length}.`;
-  } else if (arr.length > 7){
-    return `Over capacity by ${arr.length-7} items.`;
-  } else {
-    return "Full";
+  else if (checkFuel(a) === 'yellow') {
+     return a - 50001;
   }
-}
+  else {
+     return a;
+  }
+};
+let cargoSwipe = function(cargoHold) {
+  let swag = [];
+  let goldIndex = cargoHold.indexOf('gold');
+  let satelliteIndex = cargoHold.indexOf('satellite');
+  if (goldIndex !== -1) {
+      swag.push(cargoHold.splice(goldIndex, 1)[0]);
+  }
+  if (satelliteIndex !== -1) {
+      swag.push(cargoHold.splice(satelliteIndex, 1)[0]);
+  }
+  cargoHold.push('sand', 'rocks');
+  return swag;
 
-let fuelLevel = 200000;
-let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold', 'water', 'AE-35 unit'];
-
-console.log("Fuel level: " + checkFuel(fuelLevel));
-console.log("Hold status: " + holdStatus(cargoHold));
-
+let irs = function(levelOfFuel, itemsInCargo) {
+  let arr = deckMops(itemsInCargo);
+  return `Raided ${nonSuspiciousFunction(fuelLevel)} kg 
+  of fuel from the tanks, and stole ${arr[0]} and ${arr[1]} from the cargo hold.`
+};
+console.log(cargoSwipe(cargoHold)); // Test the cargoSwipe function
+console.log(irs(fuelLevel, cargoHold)); // Test the irs function
 /* Steal some fuel from the shuttle:
- * /
+ 
+
  
 //a). Define an anonymous function and set it equal to a variable with a normal, non-suspicious name. The function takes one parameter. This will be the fuel level on the shuttle.
 
@@ -54,4 +60,4 @@ console.log("Hold status: " + holdStatus(cargoHold));
 //b). Call your anonymous fuel and cargo functions from within irs.
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
-
+*/}
