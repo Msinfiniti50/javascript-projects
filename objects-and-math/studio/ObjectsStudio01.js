@@ -1,8 +1,11 @@
 // Code your selectRandomEntry function here:
-
+function selectRandomEntry(idNumbers){
+  let index = Math.floor(Math.random()*idNumbers.length);
+  return idNumbers[index];
+}
 
 // Code your buildCrewArray function here:
-
+//let buildCrewArray = [candidateA,candidateB,candidateC,candidateD,candidateE,candidateF];
 
 let idNumbers = [291, 414, 503, 599, 796, 890];
 
@@ -48,8 +51,11 @@ let candidateF = {
   'mass':2.3,
   'o2Used':function(hrs){return 0.018*hrs},
   'astronautID':890
-};
+}; 
+let selectedIds = selectRandomEntry(idNumbers);
+console.log(selectedIds);
 
-let animals = [candidateA,candidateB,candidateC,candidateD,candidateE,candidateF];
+
+
 
 // Code your template literal and console.log statements:
