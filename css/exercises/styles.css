@@ -1,1 +1,13 @@
-/* Start adding your styling below! */ 
+Body {
+  background-color: yellow;  
+}
+p {
+  color: green;
+}
+.center {
+  text-align: center;
+}
+#cool-text {
+  color: blue;
+}
+
