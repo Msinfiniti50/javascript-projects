@@ -1,85 +1,65 @@
-function init () {
-    const missionAbort = document.getElementById("abortMission");
-    const button = document.getElementById("liftoffButton");
-    const landButton = document.getElementById("landButton");
-    const upButton = document.getElementById("upButton");
-    const downButton = document.getElementById("downButton");
-    const rightButton = document.getElementById("rightButton");
-    const leftButton = document.getElementById("leftButton");
-    const paragraph = document.getElementById("statusReport");
-    const shuttleBackground = document.getElementById("shuttleBackground");
-    const shuttleHeight = document.getElementById("spaceShuttleHeight");
-    const rocket = document.getElementById("rocket");
-    let rocketPosition = 0;
-    let rocketPositionLeft = 0;
 
-    // Put your code for the exercises here.
 
-    button.addEventListener('click', function() {
-        let response = window.confirm('Confirm that the shuttle is ready for takeoff.');
-        if (response) {
-        paragraph.textContent = 'Shuttle in flight!';
-        shuttleBackground.style.backgroundColor = 'blue';
-        let currentHeight = Number(shuttleHeight.textContent);
-        shuttleHeight.textContent = currentHeight + '10,000';
-      }
-    });
+let rocketPosition = 250; // Initialize to starting position
+let rocketPositionLeft = 0; // Initialize to starting position
+let liftOff = document.getElementById('liftOff'); // Replace with actual ID
+let abortMission = document.getElementById('abortMission'); // Replace with actual ID
+let rocket = document.getElementById('rocket'); // Replace with actual ID
+let up = document.getElementById('up'); // Replace with actual ID
+let down = document.getElementById('down'); // Replace with actual ID
+let right = document.getElementById('right'); // Replace with actual ID
+let left = document.getElementById('left'); // Replace with actual ID
+let spaceShuttleHeight = document.getElementById('spaceShuttleHeight'); // Replace with actual ID
 
-    landButton.addEventListener('click', function() {
-        window.alert('The shuttle is landing. Landing gear engaged.');
-        paragraph.textContent = 'The shuttle has landed.';
-        shuttleBackground.style.backgroundColor = 'green';
-        shuttleHeight.textContent = '0';
-        rocketPosition = 0;
-        rocketPositionLeft = 0;
-        rocket.style.top = `${rocketPosition}px`;
-        rocket.style.left = `${rocketPositionLeft}px`;
-    });
-
-    missionAbort.addEventListener('click', function() {
-        let response = window.confirm('Confirm that you want to abort the mission.');
-        if (response) {
-            paragraph.textContent = 'Mission aborted.';
-            shuttleBackground.style.backgroundColor = 'green';
-            shuttleHeight.textContent = '0';
-            rocketPosition = 0;
-            rocketPositionLeft = 0;
-            rocket.style.top = `${rocketPosition}px`;
-            rocket.style.left = `${rocketPositionLeft}px`;
-        }
- });
-    
-    upButton.addEventListener('click', function() {
-      if (rocketPosition > 0) {
-        rocketPosition -= 10;
-        rocket.style.top = `${rocketPosition}px`;
-        let currentHeight = Number(shuttleHeight.textContent);
-        shuttleHeight.textContent = currentHeight + 10000;
-      }
-    });
-
-    downButton.addEventListener('click', function() {
-    if (rocketPosition < 250) {
-        rocketPosition += 10;
-        rocket.style.top = `${rocketPosition}px`;
-        let currentHeight = Number(shuttleHeight.textContent);
-        shuttleHeight.textContent = currentHeight - 10000;
-      }
-    });
-
-    rightButton.addEventListener('click', function() {
-       if(rocketPositionLeft < 250) {
-        rocketPositionLeft += 10;
-        rocket.style.left = `${rocketPosition}px`;
-       }
-    });
-
-    leftButton.addEventListener('click', function() {
-    if(rocketPositionLeft > 0) {
-        rocketPositionLeft -= 10;
-        rocket.style.left = `${rocketPosition}px`;
-      }
-    });
+function moveRocket(direction, amount) {
+    switch (direction) {
+        case 'up':
+            if (rocketPosition > 0) {
+                rocketPosition -= amount;
+                let currentHeight = Number(spaceShuttleHeight.textContent);
+                spaceShuttleHeight.textContent = currentHeight + 10000;
+            }
+            break;
+        case 'down':
+            if (rocketPosition < 250) {
+                rocketPosition += amount;
+                let currentHeight = Number(spaceShuttleHeight.textContent);
+                spaceShuttleHeight.textContent = currentHeight - 10000;
+            }
+            break;
+        case 'right':
+            if (rocketPositionLeft < 250) {
+                rocketPositionLeft += amount;
+            }
+            break;
+        case 'left':
+            if (rocketPositionLeft > 0) {
+                rocketPositionLeft -= amount;
+            }
+            break;
+    }
+    rocket.style.top = `${rocketPosition}px`;
+    rocket.style.left = `${rocketPositionLeft}px`;
 }
-
-window.onload = init;
+abortMission.addEventListener('click', () => {
+    if (confirm('Are you sure you want to abort the mission?')) {
+        spaceShuttleHeight.textContent = 0;
+        rocket.style.top = '250px';
+        rocket.style.left = '0px';
+        rocketPosition = 250;
+        rocketPositionLeft = 0;
+    
+    }
+});
+  
+liftOff.addEventListener('click', () => {
+    alert('Initiating lift off!');
+    let currentHeight = Number(spaceShuttleHeight.textContent);
+    spaceShuttleHeight.textContent = currentHeight + 10000;
+    rocket.style.top = '0px';
+    rocketPosition = 0;
+});
+up.addEventListener('click', () => moveRocket('up', 10));
+down.addEventListener('click', () => moveRocket('down', 10));
+right.addEventListener('click', () => moveRocket('right', 10));
+left.addEventListener('click', () => moveRocket('left', 10));

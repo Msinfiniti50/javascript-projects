@@ -1,0 +1,30 @@
+#missionAbort {
+ font-size : 10px;
+    
+}
+#abortMission:hover {
+    background-color: red;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#shuttleBackground {
+    position: relative;
+    height: 500px; /* Adjust as needed */
+    width: 500px; 
+}
+
+#rocket {
+    position: absolute; /* This positions the rocket relative to the shuttleBackground */
+    top: 250px; /* Initial position */
+    left: 200px; /* Initial position */
+    background-image: url("LaunchCode_rocketline_white.png");
+}
+#liftOff:hover {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    background: green;
+    font-size: 15px;
+    text-align: center;
+}

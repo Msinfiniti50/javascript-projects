@@ -3,18 +3,117 @@
     <head>
         <title>Flight Simulator</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script src = "script.js"></script>
+       
+    
     </head>
     <body>
         <h1>Flight Simulator</h1>
+        <div id="shuttleBackground"></div>
+        <p id="spaceShuttleHeight">0</p>
+            <div id="rocket"></div>
         <p id="statusReport">The shuttle is on the ground</p>
-        <button id = "liftoffButton">Take off</button>
-    <button id = "abortMission">Abort mission</button>
-    <button id = "landButton">Land</button>
-    <button id = "rightButton">Right Button</button>
-    <button id = "leftButton">Left Button</button>
-    <button id = "UpButton">Up Button</button>
-    <button id = "downButton">Down Button</button>
-    </button>
+        <button id = "liftOff">LiftOff</button>
+      <button id = "abortMission">Abort mission</button>
+      <button id = "land">Land</button>
+      <button id = "right">Right Button</button>
+      <button id = "left">Left Button</button>
+      <button id = "up">Up Button</button>
+      <button id = "down">Down Button</button>
+   
+    <script>
+    let rocketPosition = 250;
+    let rocketPositionLeft = 0;
+
+
+    function init() {
+        let liftOff = document.getElementById('liftOff');
+        let shuttleBackground = document.getElementById('shuttleBackground');
+        let spaceShuttleHeight = document.getElementById('spaceShuttleHeight');  
+        let rocket = document.getElementById('rocket');
+        let paragraph = document.getElementById('statusReport');
+        let abortMission = document.getElementById('abortMission');
+        let land = document.getElementById('land');
+        let right = document.getElementById('right');
+        let left = document.getElementById('left');
+        let up = document.getElementById('up');
+        let down = document.getElementById('down');
+       
+       
+
+        function moveRocket (direction, amount) {
+            switch (direction) {
+              case 'up':
+                rocketPosition -= 10;
+                rocket.style.top = rocketPosition + "px";
+                spaceShuttleHeight.innerHTML = Number(spaceShuttleHeight.innerHTML) + 10000;
+                break;
+            case 'down':
+                rocketPosition += 10;
+                rocket.style.top = rocketPosition + "px";
+                spaceShuttleHeight.innerHTML = Number(spaceShuttleHeight.innerHTML) - 10000;
+                break;
+            case 'right':
+                rocketPositionLeft += 10;
+                rocket.style.left = rocketPositionLeft + "px";
+                break;
+            case 'left':
+                rocketPositionLeft -= 10;
+                rocket.style.left = rocketPositionLeft + "px";
+                break;
+
+            case 'land':
+                paragraph.innerHTML = 'The shuttle is landing. Landing gear engaged.';
+                spaceShuttleHeight.innerHTML = 0;
+                rocket.style.top = '250px';
+                break;    
+            }    
+        } 
+        abortMission.addEventListener('mouseover', function(event) {
+            event.target.style.backgroundColor = "red";
+        });
+        abortMission.addEventListener('mouseout', function(event) {
+            event.target.style.backgroundColor = "";
+       
+       });
+        abortMission.addEventListener('click', () => {
+            let response = window.confirm('Are you sure you want to abort the mission?');
+            if (response) {
+                paragraph.innerHTML = 'Mission aborted ! Space shuttle is returning home.';
+                spaceShuttleHeight.innerHTML = 0;
+                rocket.style.top = '250px';
+            }
+    });
+        land.addEventListener('mouseover', function(event) {
+            event.target.style.backgroundColor = "red";
+        });
+        liftOff.addEventListener('mouseover', function(event) {
+            event.target.style.backgroundColor = "green";
+
+            
+        });
+        liftOff.addEventListener('mouseout', function(event) {
+            event.target.style.backgroundColor = "";
+        });
+
+        liftOff.addEventListener('click', () => {
+            let response = window.confirm('Confirm that the shuttle is ready for takeoff.');
+            if (response) {
+                shuttleBackground.style.backgroundColor = 'blue';
+                paragraph.innerHTML = 'Shuttle in flight.';
+                spaceShuttleHeight.innerHTML = 10000;
+                paragraph.innerHTML = 'Houston, we have liftoff!';
+                rocket.style.top = '250px';
+            }     
+        });
+        right.addEventListener('click', () => moveRocket('right', +10));
+        left.addEventListener('click', ()=> moveRocket('left', -10));
+        up.addEventListener('click', () => moveRocket('up', +10));
+        down.addEventListener('click', () => moveRocket('down', -10));
+    }
+</script>    
+<script src = "script.js"></script>
+<script>
+    window.onload = init;  
+    </script>
 </body>
 </html>
